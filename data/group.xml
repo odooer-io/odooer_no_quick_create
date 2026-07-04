@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_allow_quick_create" model="res.groups">
+        <field name="name">Allow Quick Create / Edit</field>
+        <field name="comment">Members of this group may use the Quick Create and Quick Edit options in relational field dropdowns.</field>
+    </record>
+
+    <!--
+        Make all ERP Managers (Administrators) implicit members so they keep
+        the existing behaviour without any manual action.
+    -->
+    <record id="base.group_erp_manager" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('group_allow_quick_create'))]"/>
+    </record>
+</odoo>
